@@ -1,0 +1,53 @@
+
+public class AccessModifiersExample {
+    public static void main(String[] args) {
+        Student s = new Student();
+        System.out.println("From main method:");
+        s.publicMethod();      // Accessible
+        // s.privateMethod();  // Not accessible - gives error
+        s.protectedMethod();   // Accessible (same package)
+        s.defaultMethod();     // Accessible (same package)
+
+        s.showAll();           // Calls all methods from inside class
+
+        TestStudent ts = new TestStudent();
+        ts.testAccess();       // Calls from subclass
+    }
+}
+
+class Student {
+
+    public void publicMethod() {
+        System.out.println("Public Method: Accessible everywhere.");
+    }
+
+    private void privateMethod() {
+        System.out.println("Private Method: Accessible only within this class.");
+    }
+
+    protected void protectedMethod() {
+        System.out.println("Protected Method: Accessible in same package or subclasses.");
+    }
+
+    void defaultMethod() {
+        System.out.println("Default Method: Accessible only within the same package.");
+    }
+
+    public void showAll() {
+        // All methods are accessible here since we're in the same class
+        publicMethod();
+        privateMethod();
+        protectedMethod();
+        defaultMethod();
+    }
+}
+
+class TestStudent extends Student {
+    public void testAccess() {
+        System.out.println("\nFrom subclass:");
+        publicMethod();       // Accessible
+        // privateMethod();   // Not accessible - gives error
+        protectedMethod();    // Accessible
+        defaultMethod();      // Accessible (same package)
+    }
+}
