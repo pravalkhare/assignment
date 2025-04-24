@@ -1,0 +1,69 @@
+import java.util.Scanner;
+     
+ // Main class to run the program
+public class ShapeAreaDemo {
+    public static void main(String[] args) {
+        Circle c = new Circle(5);
+        Rectangle r = new Rectangle(4, 6);
+        Triangle t = new Triangle(3, 7);
+
+        c.area();  // Area of Circle
+        r.area();  // Area of Rectangle
+        t.area();  // Area of Triangle
+    }
+}
+
+// Base class
+class Shape {
+    public void area() {
+        System.out.println("Area of shape is undefined.");
+    }
+}
+
+// Derived class - Circle
+class Circle extends Shape {
+    double radius;
+
+    Circle(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    public void area() {
+        double result = Math.PI * radius * radius;
+        System.out.println("Area of Circle: " + result);
+    }
+}
+
+// Derived class - Rectangle
+class Rectangle extends Shape {
+    double length, width;
+
+    Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    @Override
+    public void area() {
+        double result = length * width;
+        System.out.println("Area of Rectangle: " + result);
+    }
+}
+
+// Derived class - Triangle
+class Triangle extends Shape {
+    double base, height;
+
+    Triangle(double base, double height) {
+        this.base = base;
+        this.height = height;
+    }
+
+    @Override
+    public void area() {
+        double result = 0.5 * base * height;
+        System.out.println("Area of Triangle: " + result);
+    }
+}
+
